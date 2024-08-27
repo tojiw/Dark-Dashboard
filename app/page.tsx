@@ -1,113 +1,183 @@
+import Sidebar from "@/components/Sidebar";
+import SmallCard from "@/components/SmallCard";
+import BarsChart from "../components/charts/BarsChart";
+import LinesChart from "../components/charts/LinesChart";
+import {
+  Eye,
+  ArrowUpRight,
+  ArrowDownLeft,
+  User,
+  PlusCircle,
+  Star,
+  ChartLine,
+} from "lucide-react";
+import RevenueCard from "@/components/RevenueCard";
+import ProfitCard from "@/components/ProfitCard";
+import SessionsCard from "@/components/SessionsCard";
+import { DatePicker } from "@/components/DatePicker";
+import { RadialChart } from "@/components/charts/RadialChart";
+import { Tables } from "../components/Tables";
+import { Progress } from "@/components/ui/progress";
 import Image from "next/image";
-
+import map from '../public/images/illustration.svg'
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="flex flex-row">
+      <Sidebar />
+      <div className="mx-10 w-4/5 my-8 ">
+        <div className="w-full h-12">
+          <div className="flex flex-row justify-between">
+            <div className="flex flex-col">
+              <p className="font-medium text-lg">Welcome back, John</p>
+              <p className="text-[12px] font-light opacity-70">
+                Measure your advertisement ROI and report website traffic.
+              </p>
+            </div>
+            <div className="flex flex-row gap-2">
+              <button className="px-5 rounded-md bg-border-color hover:bg-inner-color">
+                <p className="">Export Data</p>
+              </button>
+              <button className="px-5 rounded-md bg-primary-color hover:opacity-90">
+                <p className="">Create Report</p>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="pt-8 lg:flex lg:flex-row flex flex-col gap-4 lg:gap-4  cursor-pointer small-cards">
+          <SmallCard
+            icon={Eye}
+            heading={"PageViews"}
+            value="50.8K"
+            stat="28.4%"
+            statColor="text-positive"
+            statBg="bg-green-700"
+            arrow={ArrowUpRight}
+          />
+          <SmallCard
+            icon={User}
+            heading="Monthly Users"
+            value="23.6K"
+            stat="12.6%"
+            statColor="text-negative"
+            statBg="bg-red-700"
+            arrow={ArrowDownLeft}
+          />
+          <SmallCard
+            icon={PlusCircle}
+            heading="New Signups"
+            value="756"
+            stat="3.1%"
+            statColor="text-positive"
+            statBg="bg-green-700"
+            arrow={ArrowUpRight}
+          />
+          <SmallCard
+            icon={Star}
+            heading="Subscriptions"
+            value="2.3K"
+            stat="11.3%"
+            statColor="text-positive"
+            statBg="bg-green-700"
+            arrow={ArrowUpRight}
+          />
+        </div>
+        <div className=" lg:flex lg:flex-row gap-4 flex flex-col">
+          <div className="mt-10 lg:w-3/5 w-full h-full lg:h-[600px] rounded-md border-card-stroke border-[0.1px] bg-inner-color">
+            <RevenueCard />
+          </div>
+          <div className="flex flex-col lg:w-1/2 w-full gap-4">
+            <div className="mt-10 h-[300px] rounded-md border-card-stroke border-[0.1px] bg-inner-color">
+              <ProfitCard Chart={BarsChart} />
+            </div>
+            <div className=" h-[283px] rounded-md border-card-stroke border-[0.1px] bg-inner-color">
+              <SessionsCard Chart={LinesChart} />
+            </div>
+          </div>
+        </div>
+        <div className="lg:mt-10 lg:flex lg:flex-col gap-6 ">
+          <h2 className="font-semibold text-xl">Reports Overview</h2>
+          <div className="flex flex-row justify-between">
+            <DatePicker />
+            <div className="flex flex-row gap-2">
+              <button className="px-5 rounded-md bg-inner-color hover:bg-inner-color">
+                <p className="">Export Data</p>
+              </button>
+              <button className="px-5 rounded-md bg-primary-color hover:opacity-90">
+                <p className="">Create Report</p>
+              </button>
+            </div>
+          </div>
+          <div className="flex flex-row gap-4 mt-5">
+            <div className="w-1/2 h-[400px] bg-inner-color rounded-md">
+              <RadialChart />
+              <div className="flex flex-col gap-4 p-5 align-middle">
+                <div className="flex flex-row justify-between">
+                  <p>Desktop Users</p>
+                  <p>15,678</p>
+                </div>
+                <div className="flex flex-row justify-between">
+                  <p>Mobile Users</p>
+                  <p>5,647</p>
+                </div>
+                <div className="flex flex-row justify-between">
+                  <p>Laptop Users</p>
+                  <p>2,478</p>
+                </div>
+              </div>
+            </div>
+            <div className="w-1/2 h-[400px] bg-inner-color rounded-md p-5">
+              <div className="flex flex-row justify-between items-center">
+                <h2 className="text-lg font-semibold">Recent Orders</h2>
+                <DatePicker />
+              </div>
+              <Tables />
+            </div>
+          </div>
+          <div className="w-full h-[400px] bg-inner-color rounded-md p-5 flex flex-row justify-between gap-2">
+            <div className="flex flex-col w-1/3"> 
+              <div className="flex flex-row gap-1 items-center">
+                <p className="text-lg font-semibold">Users by Country</p>
+              </div>
+              <div className="flex flex-row justify-between items-center">
+                <div className="flex flex-row gap-2 items-center">
+                  <span className="text-3xl font-semibold">12.4K</span>
+                  <div
+                    className={`p-1 flex flex-row items-center bg-green-700 text-positive  bg-opacity-80 rounded-sm`}
+                  >
+                    <span className="text-sm">28.5%</span>
+                    <ArrowUpRight size={15} />
+                  </div>
+                </div>
+
+                <button className="bg-background-dark py-2 px-6 rounded-md">
+                  Export
+                </button>
+              </div>
+              <div className="flex flex-col mt-4 gap-2">
+              <p className="text-sm">United States</p>
+              <Progress value={33}/>
+              </div>
+              <div className="flex flex-col mt-4 gap-2">
+              <p className="text-sm">United Kingdom</p>
+              <Progress value={23} className="[&>div]:bg-white"/>
+              </div>
+              <div className="flex flex-col mt-4 gap-2">
+              <p className="text-sm">Canada</p>
+              <Progress value={13} className="[&>div]:bg-yellow-500"/>
+              </div>
+              <div className="flex flex-col mt-4 gap-2">
+              <p className="text-sm">Mexico</p>
+              <Progress value={9} className="[&>div]:bg-[#9A91FB]"/>
+              </div>
+              <div className="flex flex-col mt-4 gap-2">
+              <p className="text-sm">Europe</p>
+              <Progress value={5} className=" [&>div]:bg-blue-500"/>
+              </div>
+            </div>
+            <Image src={map} alt="map" width={800}/>
+          </div>
         </div>
       </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   );
 }
