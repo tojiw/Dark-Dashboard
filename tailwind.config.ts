@@ -20,6 +20,9 @@ const config = {
     extend: {
       colors: {
         "primary-color":"#CB3CFF",
+        "secondary-color":"#FDB52A",
+        "system-color-g":"#05C168",
+        "system-color-b":"#086CD9",
         "background-dark":"#081028",
         "card-stroke":"#343B4F",
         "inner-color":"#0B1739",

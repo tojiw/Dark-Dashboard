@@ -19,12 +19,12 @@ import { RadialChart } from "@/components/charts/RadialChart";
 import { Tables } from "../components/Tables";
 import { Progress } from "@/components/ui/progress";
 import Image from "next/image";
-import map from '../public/images/illustration.svg'
+import map from "../public/images/illustration.svg";
 export default function Home() {
   return (
-    <div className="flex flex-row">
-      <Sidebar />
-      <div className="mx-10 w-4/5 my-8 ">
+      <div className="flex">
+        <Sidebar/>
+      <div className=" w-full p-8 ">
         <div className="w-full h-12">
           <div className="flex flex-row justify-between">
             <div className="flex flex-col">
@@ -133,8 +133,8 @@ export default function Home() {
               <Tables />
             </div>
           </div>
-          <div className="w-full h-[400px] bg-inner-color rounded-md p-5 flex flex-row justify-between gap-2">
-            <div className="flex flex-col w-1/3"> 
+          <div className="w-full h-[410px] bg-inner-color rounded-md p-5 flex flex-row justify-between gap-2">
+            <div className="flex flex-col w-1/3">
               <div className="flex flex-row gap-1 items-center">
                 <p className="text-lg font-semibold">Users by Country</p>
               </div>
@@ -154,30 +154,31 @@ export default function Home() {
                 </button>
               </div>
               <div className="flex flex-col mt-4 gap-2">
-              <p className="text-sm">United States</p>
-              <Progress value={33}/>
+                <p className="text-sm">United States</p>
+                <Progress value={33} />
               </div>
               <div className="flex flex-col mt-4 gap-2">
-              <p className="text-sm">United Kingdom</p>
-              <Progress value={23} className="[&>div]:bg-white"/>
+                <p className="text-sm">United Kingdom</p>
+                <Progress value={23} className="[&>div]:bg-white" />
               </div>
               <div className="flex flex-col mt-4 gap-2">
-              <p className="text-sm">Canada</p>
-              <Progress value={13} className="[&>div]:bg-yellow-500"/>
+                <p className="text-sm">Canada</p>
+                <Progress value={13} className="[&>div]:bg-yellow-500" />
               </div>
               <div className="flex flex-col mt-4 gap-2">
-              <p className="text-sm">Mexico</p>
-              <Progress value={9} className="[&>div]:bg-[#9A91FB]"/>
+                <p className="text-sm">Mexico</p>
+                <Progress value={9} className="[&>div]:bg-[#9A91FB]" />
               </div>
-              <div className="flex flex-col mt-4 gap-2">
-              <p className="text-sm">Europe</p>
-              <Progress value={5} className=" [&>div]:bg-blue-500"/>
+              <div className="flex flex-col mt-4 gap-2 ">
+                <p className="text-sm">Europe</p>
+                <Progress value={5} className=" [&>div]:bg-blue-500" />
               </div>
             </div>
-            <Image src={map} alt="map" width={800}/>
+            <Image src={map} alt="map" width={800} />
           </div>
         </div>
       </div>
-    </div>
+      </div>
+
   );
 }
