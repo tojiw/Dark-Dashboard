@@ -1,7 +1,6 @@
-import Sidebar from "@/components/Sidebar";
-import SmallCard from "@/components/SmallCard";
-import BarsChart from "../components/charts/BarsChart";
-import LinesChart from "../components/charts/LinesChart";
+import Image from "next/image";
+import dynamic from "next/dynamic";
+
 import {
   Eye,
   ArrowUpRight,
@@ -9,21 +8,74 @@ import {
   User,
   PlusCircle,
   Star,
-  ChartLine,
 } from "lucide-react";
+
+import SmallCard from "@/components/SmallCard";
+import Sidebar from "@/components/Sidebar";
 import RevenueCard from "@/components/RevenueCard";
 import ProfitCard from "@/components/ProfitCard";
 import SessionsCard from "@/components/SessionsCard";
 import { DatePicker } from "@/components/DatePicker";
-import { RadialChart } from "@/components/charts/RadialChart";
 import { Tables } from "../components/Tables";
 import { Progress } from "@/components/ui/progress";
-import Image from "next/image";
 import map from "../public/images/illustration.svg";
-export default function Home() {
+import { Key } from "react";
+
+const BarsChart = dynamic(() => import("../components/charts/BarsChart"), {
+  ssr: false,
+});
+const LinesChart = dynamic(() => import("../components/charts/LinesChart"), {
+  ssr: false,
+});
+const RadialChart = dynamic(
+  () => import("../components/charts/RadialChart").then((mod) => mod.default),
+  { ssr: false }
+);
+
+const Home = () => {
+  const initialData = {
+    smallCards: [
+      {
+        icon: Eye,
+        heading: "PageViews",
+        value: "50.8K",
+        stat: "28.4%",
+        statColor: "text-positive",
+        statBg: "bg-green-700",
+        arrow: ArrowUpRight,
+      },
+      {
+        icon: User,
+        heading: "Monthly Users",
+        value: "23.6K",
+        stat: "12.6%",
+        statColor: "text-negative",
+        statBg: "bg-red-700",
+        arrow: ArrowDownLeft,
+      },
+      {
+        icon: PlusCircle,
+        heading: "New Signups",
+        value: "756",
+        stat: "3.1%",
+        statColor: "text-positive",
+        statBg: "bg-green-700",
+        arrow: ArrowUpRight,
+      },
+      {
+        icon: Star,
+        heading: "Subscriptions",
+        value: "2.3K",
+        stat: "11.3%",
+        statColor: "text-positive",
+        statBg: "bg-green-700",
+        arrow: ArrowUpRight,
+      },
+    ],
+  };
   return (
-      <div className="flex font-DM-Sans">
-        <Sidebar/>
+    <div className="flex">
+      <Sidebar />
       <div className=" w-full p-8 ">
         <div className="w-full h-12">
           <div className="flex flex-row justify-between">
@@ -44,42 +96,9 @@ export default function Home() {
           </div>
         </div>
         <div className="pt-8 lg:flex lg:flex-row flex flex-col gap-4 lg:gap-4  cursor-pointer small-cards">
-          <SmallCard
-            icon={Eye}
-            heading={"PageViews"}
-            value="50.8K"
-            stat="28.4%"
-            statColor="text-positive"
-            statBg="bg-green-700"
-            arrow={ArrowUpRight}
-          />
-          <SmallCard
-            icon={User}
-            heading="Monthly Users"
-            value="23.6K"
-            stat="12.6%"
-            statColor="text-negative"
-            statBg="bg-red-700"
-            arrow={ArrowDownLeft}
-          />
-          <SmallCard
-            icon={PlusCircle}
-            heading="New Signups"
-            value="756"
-            stat="3.1%"
-            statColor="text-positive"
-            statBg="bg-green-700"
-            arrow={ArrowUpRight}
-          />
-          <SmallCard
-            icon={Star}
-            heading="Subscriptions"
-            value="2.3K"
-            stat="11.3%"
-            statColor="text-positive"
-            statBg="bg-green-700"
-            arrow={ArrowUpRight}
-          />
+          {initialData.smallCards.map((card, index: Key | null | undefined) => (
+            <SmallCard key={index} {...card} />
+          ))}
         </div>
         <div className=" lg:flex lg:flex-row gap-4 flex flex-col">
           <div className="mt-10 lg:w-3/5 w-full h-full lg:h-[600px] rounded-md border-card-stroke border-[0.1px] bg-inner-color">
@@ -174,11 +193,12 @@ export default function Home() {
                 <Progress value={5} className=" [&>div]:bg-blue-500" />
               </div>
             </div>
-            <Image src={map} alt="map" width={800} />
+            <Image src={map} alt="map" width={800} className="lg:inline-block hidden" />
           </div>
         </div>
       </div>
-      </div>
-
+    </div>
   );
-}
+};
+
+export default Home;

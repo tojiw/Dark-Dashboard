@@ -32,7 +32,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function RadialChart() {
+const RadialChart=()=> {
   return (
     <Card className="flex flex-col">
       <CardContent className="flex-1 pb-0">
@@ -92,3 +92,4 @@ export function RadialChart() {
     </Card>
   )
 }
+export default RadialChart

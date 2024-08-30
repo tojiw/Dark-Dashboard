@@ -17,6 +17,7 @@ const Signup = () => {
           objectFit="cover"
           quality={100}
           className="grayscale opacity-40"
+          priority
         />
         <div className="relative z-10 flex flex-col justify-between h-full">
           <div className="flex flex-row gap-1">
