@@ -30,6 +30,9 @@ const config = {
         "inner-text":"#AEB9E1",
 
       },
+      fontFamily:{
+        "DM-Sans":["DM_Sans", "sans-serif"]
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

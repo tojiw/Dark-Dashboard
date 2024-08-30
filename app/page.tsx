@@ -22,7 +22,7 @@ import Image from "next/image";
 import map from "../public/images/illustration.svg";
 export default function Home() {
   return (
-      <div className="flex">
+      <div className="flex font-DM-Sans">
         <Sidebar/>
       <div className=" w-full p-8 ">
         <div className="w-full h-12">

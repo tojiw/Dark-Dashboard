@@ -9,7 +9,7 @@ import Avatar from "../public/images/person-avatar.svg";
 
 const Sidebar = () => {
   return (
-    <div className="lg:w-2/12 w-1/4 max-sm:hidden h-screen flex flex-col border-r-[0.1px] border-border-color bg-background-dark px-7 pt-8 sticky top-0 overflow-y-auto">
+    <div className="lg:w-2/12 max-md:hidden w-1/4 max-sm:hidden h-screen flex flex-col border-r-[0.1px] border-border-color bg-background-dark px-7 pt-8 sticky top-0 overflow-y-auto">
       <div className="flex flex-row gap-1">
         <Image src={logo} alt="logo-image" width={24} height={24} />
         <span className="hidden lg:block text-lg font-semibold">

@@ -1,7 +1,10 @@
 import Sidebar from "@/components/Sidebar";
 import UserCard from "@/components/UserCard";
-import { UserRound, UsersRound } from "lucide-react";
+import { Ellipsis, Heart, UserRound, UsersRound } from "lucide-react";
 import React from "react";
+import { DataTable } from "../report-data/data-table";
+import { data } from "@/components/ReportData";
+import { columns } from "../report-data/columns";
 
 const page = () => {
   return (
@@ -24,38 +27,37 @@ const page = () => {
           </button>
         </div>
 
-      <div className="mt-10 flex gap-8 justify-evenl">
-      <UserCard
-        icon={UserRound}
-        heading="Total Users"
-        value="250"
-        color="primary-color"
-        iconColor="#CB3CFF"
-      />
-      <UserCard
-        icon={UsersRound}
-        heading="New Users"
-        value="15"
-        color="primary-color"
-        iconColor="#CB3CFF"
-      />
-      <UserCard
-        icon={UsersRound}
-        heading="Total Users"
-        value="250"
-        color="primary-color"
-        iconColor="#CB3CFF"
-      />
-      <UserCard
-        icon={UsersRound}
-        heading="Total Users"
-        value="250"
-        color="primary-color"
-        iconColor="#CB3CFF"
-      />
-      
-      </div>
-
+        <div className="mt-10 flex gap-8">
+          <UserCard
+            icon={UserRound}
+            heading="Total Users"
+            value="250"
+            color="bg-primary-color"
+            iconColor="#CB3CFF"
+          />
+          <UserCard
+            icon={UsersRound}
+            heading="New Users"
+            value="15"
+            color="bg-secondary-color"
+            iconColor="#FDB52A"
+          />
+          <UserCard
+            icon={Heart}
+            heading="Top Users"
+            value="150"
+            color="bg-system-color-g"
+            iconColor="#05C168"
+          />
+          <UserCard
+            icon={Ellipsis}
+            heading="Other Users"
+            value="35"
+            color="bg-system-color-b"
+            iconColor="#086CD9"
+          />
+        </div>
+      <DataTable data={data} columns={columns}/>
       </div>
     </div>
   );
