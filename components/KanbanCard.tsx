@@ -8,7 +8,11 @@ import { Task, KanbanCardProps } from "@/utils/types";
 const KanbanCard: FC<KanbanCardProps> = ({ task, updateTaskTitle }) => {
   const [isEditing, setIsEditing] = useState(false);
   return (
-    <div className=" bg-inner-color rounded-md border-[0.1px] border-card-stroke p-5">
+    <div draggable
+    onDragStart={(e)=>{
+      e.dataTransfer.setData("id",task.id)
+    }}
+     className=" bg-inner-color rounded-md border-[0.1px] border-card-stroke p-5">
       <div className="flex flex-row justify-between">
         <div className="">
           <Image src={avatars} alt="" width={100} />
@@ -21,7 +25,7 @@ const KanbanCard: FC<KanbanCardProps> = ({ task, updateTaskTitle }) => {
         </div>
       </div>
       <div className="flex flex-col gap-[.5rem] justify-between">
-        <div className="space-y-2">
+        <div className="space-y-2 pt-2">
           {isEditing ? (
             <input
               autoFocus
