@@ -20,8 +20,15 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSubmit, onCancel }) => {
     onSubmit({ title, description, subtitle, status, icon });
   };
 
+  const handleClick=(e:React.MouseEvent)=>{
+    if(e.target===e.currentTarget)
+    {
+      onCancel()
+    }
+  }
+
   return (
-    // <div className="fixed inset-0 bg-gray-800 bg-opacity-65 flex justify-center items-center">
+    <div className="fixed inset-0 bg-gray-800 bg-opacity-65 flex justify-center items-center" onClick={handleClick}>
 
     <form onSubmit={handleSubmit} className="bg-background-dark p-4 rounded-md">
       <input
@@ -59,7 +66,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSubmit, onCancel }) => {
           </option>
         ))}
       </select>
-      <select
+      <select                              //check code and understand
         onChange={(e) => {
           const selectedIcon = e.target.value;
           setIcon(
@@ -89,7 +96,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSubmit, onCancel }) => {
         </button>
       </div>
     </form>
-    // </div>
+    </div>
 
   );
 };

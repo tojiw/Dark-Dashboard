@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, DM_Sans } from "next/font/google";
 import "./globals.css";
-import Sidebar from "@/components/Sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 const dm_sans = DM_Sans({
@@ -21,18 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`{inter.className}{dm_sans.className} bg-background-dark text-white scrollbar scrollbar-thumb-primary-color  `}
+        className={`{inter.className}{dm_sans.className} bg-background-dark text-white scrollbar scrollbar-thumb-inner-color  `}
       >
-        {/* <div className="flex min-h-screen overflow-hidden "> */}
-      {/* <Sidebar/> */}
-      {/* <main className="flex-1 overflow-y-auto"> */}
-       <div className="scrollbar-thumb-background-dark">
-        {children}
-
-       </div>
-
-      {/* </main> */}
-        {/* </div> */}
+        <div className="scrollbar-thumb-background-dark">{children}</div>
       </body>
     </html>
   );

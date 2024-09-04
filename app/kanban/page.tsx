@@ -10,20 +10,6 @@ const Kanban = () => {
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [isHoveringOver, setIsHoveringOver] = useState<Status | null>(null);
   const [isFormVisible, setIsFormVisible] = useState(false);
-  const formRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(()=>{
-    const handleMouseClick = (event:MouseEvent)=>{
-      if(formRef.current&& formRef.current.contains(event.target as Node))
-      {
-        setIsFormVisible(false)
-      }
-    }
-    if(isFormVisible){
-      document.addEventListener("mousedown",handleMouseClick)
-    }
-    return ()=> {document.removeEventListener("mousedown",handleMouseClick)}
-  },[isFormVisible])
 
   const updateTaskTitle = (task: Task, title: string) => {
     const updatedTask = tasks.map((t) => {
@@ -86,16 +72,6 @@ const Kanban = () => {
           >
             <div className="flex flex-row justify-between w-full items-center">
               <div className="flex flex-row gap-2">
-                {isFormVisible && (
-                  <div
-                  ref={formRef}
-                   className="fixed inset-0 bg-gray-800 bg-opacity-65 flex justify-center items-center">
-                    <TaskForm
-                      onSubmit={addNewTask}
-                      onCancel={() => setIsFormVisible(false)}
-                    />
-                  </div>
-                )}
                 <h1 className=" capitalize text-[#AEB9E1]">{column.status}</h1>
                 <span className="text-sm text-[#AEB9E1] bg-inner-color flex px-2 rounded-md border-[0.1px] border-system-color-b">
                   {column.tasks.length}
@@ -112,6 +88,15 @@ const Kanban = () => {
               >
                 +
               </button>
+              {isFormVisible && (
+                <TaskForm
+                  onSubmit={addNewTask}
+                  onCancel={() => {
+                    setIsFormVisible(false);
+                    // setActiveColumn(null);
+                  }}
+                />
+              )}
               {column.tasks.map((task) => (
                 <KanbanCard
                   task={task}
