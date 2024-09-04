@@ -3,10 +3,12 @@ import avatars from "@/public/images/avatars.svg";
 import Image from "next/image";
 import { Ellipsis, MessageCircle, Paperclip } from "lucide-react";
 
-import { Task, KanbanCardProps } from "@/utils/types";
+import {  KanbanCardProps } from "@/utils/types";
 
 const KanbanCard: FC<KanbanCardProps> = ({ task, updateTaskTitle }) => {
+
   const [isEditing, setIsEditing] = useState(false);
+  
   return (
     <div draggable
     onDragStart={(e)=>{

@@ -21,12 +21,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`{inter.className}{dm_sans.className} bg-background-dark text-white`}
+        className={`{inter.className}{dm_sans.className} bg-background-dark text-white scrollbar scrollbar-thumb-primary-color  `}
       >
         {/* <div className="flex min-h-screen overflow-hidden "> */}
       {/* <Sidebar/> */}
       {/* <main className="flex-1 overflow-y-auto"> */}
+       <div className="scrollbar-thumb-background-dark">
         {children}
+
+       </div>
 
       {/* </main> */}
         {/* </div> */}

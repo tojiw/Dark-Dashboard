@@ -16,6 +16,13 @@ export interface KanbanCardProps {
   updateTaskTitle: (task: Task, title: string) => void;
 }
 
+
+ interface TaskformProps{
+  onSubmit:(newTask:Partial<Task>)=>void
+  onCancel:()=>void
+}
+
+
 export const tasks: Task[] = [
   {
     id: "1",
